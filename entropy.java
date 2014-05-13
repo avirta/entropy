@@ -1,49 +1,53 @@
- import java.awt.*;
+import java.awt.*;
 import java.applet.*;
 import java.awt.event.*;
 
 public class HelloWorld extends Frame {
 FileDialog dialogLoad;
+
     public static void main (String [] argv){
-	HelloWorld h = new HelloWorld();
+HelloWorld h = new HelloWorld();
+
     }
 
     TextField surname;
     public class Listener1 implements ActionListener{
-	    public void actionPerformed(ActionEvent e) {
-		surname.setText("енко");
-		//System.exit(0);
-	    }
+	public void actionPerformed(ActionEvent e) {
+	surname.setText("енко");
+//System.exit(0);
+	}
    }
+	Frame myWindow;
 
-Frame myWindow;
     public HelloWorld(){
-	setTitle("Hello World!");		
+	setTitle("Hello World!");	
 	setSize(800, 600);
-        GridLayout grid1= new GridLayout(8,4);// кількість стовбців, кількість рядків
+        GridLayout grid1= new GridLayout(6,3);// кількість стовбців, кількість рядків
         setLayout(grid1);
-	
-        add(new Label("Завантажити вихідний ряд"));
+
+       add(new Label("Завантажити вхідний ряд"));
+	TextField inFileName=new TextField("..");
+        add(inFileName);
 	Button BtDownload = new Button("Обзор");
         add(BtDownload );
 
-
-        add(new Label("Розмір вікна"));
+add(new Label(""));
+       add(new Label("Розмір вікна"));
 	TextField znachennya=new TextField("250");
         add(znachennya);
-	//Button BtName = new Button("SetSurname  ");
+//Button BtName = new Button("SetSurname ");
         //add(BtName);
+       
+    add(new Label(""));
+       add(new Label("Завантажити вихідний ряд"));
+TextField outFileName=new TextField("..");
+        add(outFileName);
+	Button BtDownload2 = new Button("Обзор");
+        add(BtDownload2 );
 
-        add(new Label("Діапазон зміни стану[0,S], S="));
-        TextField Diapazon=new TextField("3");
-        add(Diapazon);
-        //	Button BtFathersName = new Button("SetSurname  ");
-        //add(BtFathersName);
-        add(new Label("Кількість станів, k"));
-        TextField Sostoyanie=new TextField("6");
-        add(Sostoyanie);
-      
-	Button BtResult = new Button("Порахувати ентропію");
+      add(new Label(""));
+Button BtResult = new Button("Порахувати ентропію");
+        add(new Label(""));
         add(BtResult);
 
 	Panel hello = new Panel();
@@ -51,12 +55,12 @@ Frame myWindow;
         myWindow=this;
         
 	BtDownload.addActionListener(new ActionListener() {
-	    public void actionPerformed(ActionEvent e) {
-		dialogLoad = new FileDialog(myWindow, "Вибір файла", FileDialog.LOAD);
-		dialogLoad.show();
-		String s = dialogLoad.getFile();
+	public void actionPerformed(ActionEvent e) {
+	dialogLoad = new FileDialog(myWindow, "Вибір файла", FileDialog.LOAD);
+	dialogLoad.show();
+	String s = dialogLoad.getFile();
 
-		//System.exit(0);
+//System.exit(0);
 	   }
 	});
 
@@ -67,3 +71,8 @@ Frame myWindow;
 
 	addWindowListener(new WindowAdapter(){
 	    public void windowClosing(WindowEvent e){ 
+		System.exit(0);
+	    }
+	});
+    }
+}
