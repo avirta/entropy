@@ -2,11 +2,11 @@ import java.awt.*;
 import java.applet.*;
 import java.awt.event.*;
 
-public class HelloWorld extends Frame {
+public class Entropy extends Frame {
 FileDialog dialogLoad;
-
+int znachennya;
     public static void main (String [] argv){
-HelloWorld h = new HelloWorld();
+Entropy h = new Entropy();
 
     }
 
@@ -19,8 +19,8 @@ HelloWorld h = new HelloWorld();
    }
 	Frame myWindow;
 
-    public HelloWorld(){
-	setTitle("Hello World!");	
+    public Entropy(){
+	setTitle("Сalculate the Entropy");	
 	setSize(800, 600);
         GridLayout grid1= new GridLayout(6,3);// кількість стовбців, кількість рядків
         setLayout(grid1);
@@ -31,14 +31,14 @@ HelloWorld h = new HelloWorld();
 	Button BtDownload = new Button("Обзор");
         add(BtDownload );
 
-add(new Label(""));
        add(new Label("Розмір вікна"));
 	TextField znachennya=new TextField("250");
         add(znachennya);
 //Button BtName = new Button("SetSurname ");
         //add(BtName);
        
-    add(new Label(""));
+  
+	add(new Label(""));
        add(new Label("Завантажити вихідний ряд"));
 TextField outFileName=new TextField("..");
         add(outFileName);
@@ -46,6 +46,7 @@ TextField outFileName=new TextField("..");
         add(BtDownload2 );
 
       add(new Label(""));
+
 Button BtResult = new Button("Порахувати ентропію");
         add(new Label(""));
         add(BtResult);
@@ -59,6 +60,7 @@ Button BtResult = new Button("Порахувати ентропію");
 	dialogLoad = new FileDialog(myWindow, "Вибір файла", FileDialog.LOAD);
 	dialogLoad.show();
 	String s = dialogLoad.getFile();
+	
 
 //System.exit(0);
 	   }
