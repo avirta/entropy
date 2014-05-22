@@ -4,7 +4,11 @@ import java.awt.event.*;
 
 public class Entropy extends Frame {
 FileDialog dialogLoad;
-int znachennya;
+
+    protected TextField inFileName;
+    protected TextField outFileName;
+    public TextField znachennya;
+
     public static void main (String [] argv){
 Entropy h = new Entropy();
 
@@ -17,6 +21,7 @@ Entropy h = new Entropy();
 //System.exit(0);
 	}
    }
+
 	Frame myWindow;
 
     public Entropy(){
@@ -26,13 +31,13 @@ Entropy h = new Entropy();
         setLayout(grid1);
 
        add(new Label("Завантажити вхідний ряд"));
-	TextField inFileName=new TextField("..");
+	 inFileName=new TextField("..");
         add(inFileName);
 	Button BtDownload = new Button("Обзор");
         add(BtDownload );
 
        add(new Label("Розмір вікна"));
-	TextField znachennya=new TextField("250");
+	 znachennya=new TextField("250");
         add(znachennya);
 //Button BtName = new Button("SetSurname ");
         //add(BtName);
@@ -40,7 +45,7 @@ Entropy h = new Entropy();
   
 	add(new Label(""));
        add(new Label("Завантажити вихідний ряд"));
-TextField outFileName=new TextField("..");
+	 outFileName=new TextField("..");
         add(outFileName);
 	Button BtDownload2 = new Button("Обзор");
         add(BtDownload2 );
@@ -59,8 +64,22 @@ Button BtResult = new Button("Порахувати ентропію");
 	public void actionPerformed(ActionEvent e) {
 	dialogLoad = new FileDialog(myWindow, "Вибір файла", FileDialog.LOAD);
 	dialogLoad.show();
-	String s = dialogLoad.getFile();
-	
+	String file = dialogLoad.getFile();
+	String directory = dialogLoad.getDirectory();
+	String fullFileName = directory + file;
+	inFileName.setText(fullFileName);
+   	}
+	});
+
+
+        BtDownload2.addActionListener(new ActionListener() {
+	public void actionPerformed(ActionEvent e) {
+	dialogLoad = new FileDialog(myWindow, "Вибір файла", FileDialog.SAVE);
+	dialogLoad.show();
+	String file = dialogLoad.getFile();
+	String directory = dialogLoad.getDirectory();
+	String fullFileName = directory + file;
+	 outFileName.setText(fullFileName);
 
 //System.exit(0);
 	   }
